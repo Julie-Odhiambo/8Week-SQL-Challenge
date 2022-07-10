@@ -170,3 +170,15 @@ ON s.customer_id = m1.customer_id
 WHERE s.customer_id IN ('A', 'B')
 AND EXTRACT(month from order_date) = 1
 GROUP BY s.customer_id
+
+/*BONUS QUESTIONS - JOIN ALL THINGS */
+
+SELECT  s.customer_id, s.order_date, m.product_name, m.price, 
+    CASE WHEN order_date >= join_date THEN 'Y'
+        ELSE 'N' END AS member
+FROM sales AS s
+INNER JOIN menu AS m
+ON s. product_id = m.product_id
+LEFT JOIN members AS m1
+ON s.customer_id = m1.customer_id
+ORDER BY s.customer_id, s.order_date, m.price DESC
