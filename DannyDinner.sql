@@ -1,3 +1,4 @@
+
 /* CASE STUDY #1 - DANNY'S DINER */
 
 CREATE SCHEMA dannys_diner;
