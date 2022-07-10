@@ -64,21 +64,21 @@ VALUES
 
    -- 3. What was the first item from the menu purchased by each customer?
   WITH purchase AS (SELECT s.customer_id, m.product_name, s.order_date,
-  						RANK() 
-							OVER(PARTITION BY s.customer_id ORDER BY order_date) AS rank
-				    FROM sales AS s
-				    INNER JOIN menu AS m
-				    ON m.product_id = s.product_id)
+  			RANK() 
+			  OVER(PARTITION BY s.customer_id ORDER BY order_date) AS rank
+		    FROM sales AS s
+		    INNER JOIN menu AS m
+		    ON m.product_id = s.product_id)
   SELECT DISTINCT purchase.customer_id, purchase.product_name, purchase.order_date
   FROM purchase
   WHERE rank = 1
 
    -- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
    WITH most_purchased AS (
-						   SELECT COUNT(*) AS count, product_id
-						   FROM sales
-						   GROUP BY product_id
-						   )
+			   SELECT COUNT(*) AS count, product_id
+			   FROM sales
+	   		   GROUP BY product_id
+   			  )
    SELECT m.product_name, m_p.count
    FROM menu AS m
    INNER JOIN most_purchased AS m_p
@@ -88,14 +88,14 @@ VALUES
 
 -- 5. Which item was the most popular for each customer?
 WITH most_popular AS (
-					  SELECT s.customer_id, m.product_name, COUNT(*) AS order_count,
-						RANK() OVER(PARTITION BY s.customer_id 
-							ORDER BY count(s.customer_id) DESC) AS count
-					  FROM sales AS s
-					  INNER JOIN menu AS m
-					  ON s.product_id = m.product_id
-					  GROUP BY s.customer_id, m.product_name			
-						)
+		      SELECT s.customer_id, m.product_name, COUNT(*) AS order_count,
+				RANK() OVER(PARTITION BY s.customer_id 
+					ORDER BY count(s.customer_id) DESC) AS count
+		      FROM sales AS s
+		      INNER JOIN menu AS m
+		      ON s.product_id = m.product_id
+	              GROUP BY s.customer_id, m.product_name			
+		     )
 SELECT most_popular.customer_id, most_popular.product_name
 FROM most_popular
 WHERE most_popular.count = 1
@@ -103,16 +103,16 @@ WHERE most_popular.count = 1
 -- 6. Which item was purchased first by the customer after they became a member?
 
 WITH member_purchase AS (SELECT	s.customer_id, m.product_name,
-								RANK()
-								OVER(partition by s.customer_id 
-								ORDER BY s.order_date) AS first_purchased, 
-								s.order_date
-						FROM sales AS s
-						INNER JOIN members AS m1
-						ON s.customer_id = m1.customer_id
-						INNER JOIN menu AS m
-						ON s.product_id = m.product_id
-						WHERE s.order_date >= m1.join_date)
+				RANK()
+				  OVER(partition by s.customer_id 
+					ORDER BY s.order_date) AS first_purchased, 
+				s.order_date
+		         FROM sales AS s
+			 INNER JOIN members AS m1
+			 ON s.customer_id = m1.customer_id
+			 INNER JOIN menu AS m
+			 ON s.product_id = m.product_id
+			 WHERE s.order_date >= m1.join_date)
 SELECT customer_id, product_name, order_date
 FROM member_purchase
 WHERE first_purchased = 1
@@ -120,16 +120,16 @@ WHERE first_purchased = 1
 -- 7. Which item was purchased just before the customer became a member?
 
 WITH member_purchase AS (SELECT	s.customer_id, m.product_name,
-							RANK()
-								OVER(partition by s.customer_id 
-							      ORDER BY s.order_date DESC) AS last_purchased, 
-								s.order_date
-						FROM sales AS s
-						INNER JOIN members AS m1
-						ON s.customer_id = m1.customer_id
-						INNER JOIN menu AS m
-						ON s.product_id = m.product_id
-						WHERE s.order_date < m1.join_date)
+			    RANK()
+			      OVER(partition by s.customer_id 
+				 ORDER BY s.order_date DESC) AS last_purchased, 
+			    s.order_date
+			 FROM sales AS s
+			 INNER JOIN members AS m1
+			 ON s.customer_id = m1.customer_id
+			 INNER JOIN menu AS m
+			 ON s.product_id = m.product_id
+			 WHERE s.order_date < m1.join_date)
 SELECT customer_id, product_name, order_date
 FROM member_purchase
 WHERE last_purchased = 1
@@ -149,7 +149,7 @@ GROUP BY s.customer_id
 	points would each customer have? */
 SELECT s.customer_id,
 		SUM( CASE WHEN product_name = 'sushi' THEN price*10*2
-				ELSE price*10 END) AS points
+			ELSE price*10 END) AS points
 FROM sales AS s
 JOIN menu AS m
 ON s.product_id = m.product_id
@@ -161,7 +161,7 @@ SELECT s.customer_id,
 		SUM(CASE WHEN product_name = 'sushi' 
 			OR order_date BETWEEN CAST(join_date as timestamp) 
 			AND CAST(join_date as timestamp) + INTERVAL '6 DAY' THEN price*10*2
-				ELSE price*10 END) AS points
+			 ELSE price*10 END) AS points
 FROM sales AS s
 JOIN menu AS m
 ON s.product_id = m.product_id
