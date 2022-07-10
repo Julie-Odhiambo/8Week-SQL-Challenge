@@ -1,3 +1,7 @@
+/* CASE STUDY #1 - DANNY'S DINER */
+
+CREATE SCHEMA dannys_diner;
+
 CREATE TABLE sales (
   "customer_id" VARCHAR(1),
   "order_date" DATE,
