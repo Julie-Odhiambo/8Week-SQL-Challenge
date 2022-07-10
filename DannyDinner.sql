@@ -171,7 +171,8 @@ WHERE s.customer_id IN ('A', 'B')
 AND EXTRACT(month from order_date) = 1
 GROUP BY s.customer_id
 
-/*BONUS QUESTIONS - JOIN ALL THINGS */
+/*BONUS QUESTIONS 
+ 2. JOIN ALL THINGS */
 
 SELECT  s.customer_id, s.order_date, m.product_name, m.price, 
     CASE WHEN order_date >= join_date THEN 'Y'
@@ -182,3 +183,22 @@ ON s. product_id = m.product_id
 LEFT JOIN members AS m1
 ON s.customer_id = m1.customer_id
 ORDER BY s.customer_id, s.order_date, m.price DESC
+
+-- 2. RANK ALL THE THINGS
+
+WITH rankings1 AS (
+                   SELECT  s.customer_id, s.order_date, m.product_name, m.price, 
+                     CASE WHEN order_date >= join_date THEN 'Y'
+                       ELSE 'N' END AS member
+                   FROM sales AS s
+                   INNER JOIN menu AS m
+                   ON s. product_id = m.product_id
+                   LEFT JOIN members AS m1
+                   ON s.customer_id = m1.customer_id
+                   ORDER BY s.customer_id, s.order_date, m.price DESC
+                  )
+SELECT *, CASE WHEN member = 'N' THEN NULL
+            WHEN member = 'Y' THEN RANK() 
+             OVER(PARTITION BY customer_id, member
+                  ORDER BY order_date) END AS ranking
+FROM rankings1
