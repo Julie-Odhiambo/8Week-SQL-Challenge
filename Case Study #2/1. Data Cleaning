@@ -1,0 +1,72 @@
+/****************************************************
+            Data cleaning
+ cleaning customer_orders and runner_orders table 
+*****************************************************/
+    
+-- Inspecting customer_orders table 
+SELECT
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_name = 'customer_orders';
+
+-- Inspecting runner_orders table
+SELECT
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_name = 'runner_orders';
+
+/* A. Customer_order:
+    - Create temp table from customer_order table.
+    - Replace nulls and blanks with NULLs for consistency in exclusions 
+        and extras columns */
+        
+DROP TABLE IF EXISTS clean_customer_orders;
+CREATE TEMP TABLE clean_customer_orders AS
+     (SELECT order_id, customer_id, pizza_id, order_time,
+        CASE WHEN exclusions = 'null' or exclusions = '' THEN NULL 
+            ELSE exclusions END AS exclusions,
+         CASE WHEN extras = '' or extras = 'null' THEN NULL 
+            ELSE extras END AS extras
+     FROM customer_orders);
+     
+SELECT * FROM clean_customer_orders;
+
+-- Inspecting clean_customer_orders table 
+SELECT
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_name = 'clean_customer_orders';
+  
+/* B. Runner_orders table:
+   1. Remove nulls and blanks from pickup_time, distance, duration & 
+        cancellation columns and replace with NULLs for consistency.
+   2. Convert pickup_time column to datetime data type.
+   3. Remove km from distance column and convert column to numeric data type.
+   4. Remove mins, minute, minutes from duration and convert to integer */
+          
+DROP TABLE IF EXISTS clean_runner_orders;
+CREATE TEMP TABLE clean_runner_orders AS 
+    (SELECT order_id, runner_id, 
+       CASE WHEN pickup_time = 'null' THEN NULL
+            ELSE pickup_time END::timestamp AS pickup_time,
+       CASE WHEN distance = 'null' THEN NULL
+            WHEN distance LIKE '%km' THEN TRIM('km' from distance)
+                ELSE distance END::numeric AS distance,
+       CASE WHEN duration = 'null' THEN NULL
+            WHEN duration LIKE '%min%' THEN LEFT(duration, 2)
+                ELSE duration END::numeric AS duration,
+       CASE WHEN cancellation = 'null' OR cancellation LIKE '' THEN NULL 
+            ELSE cancellation END AS cancellation
+    FROM runner_orders);
+    
+SELECT * FROM clean_runner_orders
+
+-- Inspecting clean_runner_orders table
+SELECT
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_name = 'clean_runner_orders';
