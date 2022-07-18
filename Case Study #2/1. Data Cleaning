@@ -3,14 +3,15 @@
  cleaning customer_orders and runner_orders table 
 *****************************************************/
     
--- Inspecting customer_orders table 
+-- Inspecting customer_orders table:
+
 SELECT
   column_name,
   data_type
 FROM information_schema.columns
 WHERE table_name = 'customer_orders';
 
--- Inspecting runner_orders table
+-- Inspecting runner_orders table:
 SELECT
   column_name,
   data_type
@@ -18,9 +19,8 @@ FROM information_schema.columns
 WHERE table_name = 'runner_orders';
 
 /* A. Customer_order:
-    - Create temp table from customer_order table.
-    - Replace nulls and blanks with NULLs for consistency in exclusions 
-        and extras columns */
+    1. Create temp table from customer_order table.
+    2. Replace nulls and blanks with NULLs for consistency in exclusions and extras columns */
         
 DROP TABLE IF EXISTS clean_customer_orders;
 CREATE TEMP TABLE clean_customer_orders AS
@@ -30,10 +30,12 @@ CREATE TEMP TABLE clean_customer_orders AS
          CASE WHEN extras = '' or extras = 'null' THEN NULL 
             ELSE extras END AS extras
      FROM customer_orders);
+ 
+ -- Checking clean_customer_orders table:
      
 SELECT * FROM clean_customer_orders;
 
--- Inspecting clean_customer_orders table 
+-- Inspecting clean_customer_orders table:
 SELECT
   column_name,
   data_type
@@ -61,6 +63,8 @@ CREATE TEMP TABLE clean_runner_orders AS
        CASE WHEN cancellation = 'null' OR cancellation LIKE '' THEN NULL 
             ELSE cancellation END AS cancellation
     FROM runner_orders);
+    
+-- Checking clean_runner_orders table:
     
 SELECT * FROM clean_runner_orders
 
