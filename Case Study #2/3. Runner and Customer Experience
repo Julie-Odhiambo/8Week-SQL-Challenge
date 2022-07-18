@@ -1,13 +1,14 @@
--- B. Runner and Customer Experience
-/*   1. How many runners signed up for each 1 week period? 
-     (i.e. week starts 2021-01-01) */
+/**************************************************************************************
+                    B. Runner and Customer Experience
+***************************************************************************************/
+--  1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 
 SELECT EXTRACT(WEEK FROM registration_date) AS week,
         COUNT(*)
 FROM runners
 GROUP BY EXTRACT(WEEK FROM registration_date);
 
-/* 2.  What was the average time in minutes it took for each runner to 
+-- 2.  What was the average time in minutes it took for each runner to 
        arrive at the Pizza Runner HQ to pickup the order? */
 SELECT cro.runner_id, 
     date_part('minutes', AVG(cro.pickup_time-cco.order_time)) AS avg
@@ -17,7 +18,7 @@ ON cco.order_id = cro.order_id
 WHERE cro.pickup_time IS NOT NULL
 GROUP BY cro.runner_id;
 
-/* 3. Is there any relationship between the number of pizzas 
+-- 3. Is there any relationship between the number of pizzas 
       and how long the order takes to prepare? */      
 WITH relationship AS 
             (SELECT cco.order_id,
@@ -44,12 +45,12 @@ SELECT ROUND(AVG(cro.distance),2),
  GROUP BY cco.customer_id
  ORDER BY cco.customer_id;
  
-/* 5. What was the difference between the longest and shortest
+-- 5. What was the difference between the longest and shortest
         delivery times for all orders? */ 
 SELECT MAX(duration)- MIN(duration) as difference_delivery_time
 FROM clean_runner_orders;
 
-/* 6. What was the average speed for each runner for each delivery 
+-- 6. What was the average speed for each runner for each delivery 
         and do you notice any trend for these values? */
 SELECT runner_id, order_id,
      ROUND((AVG(distance))/(AVG(duration/60)),2) AS avg_speed
