@@ -1,5 +1,7 @@
- /*  A. Pizza Metrics 
-     1. How many pizzas were ordered? */
+ /**********************************************************
+                 A. Pizza Metrics 
+ ***********************************************************/
+  --  1. How many pizzas were ordered?
 
 SELECT COUNT(*) as total_pizzas_ordered
 FROM clean_customer_orders; 
@@ -50,15 +52,13 @@ GROUP BY r.order_id
 ORDER BY max_pizzas_delivered DESC
 LIMIT 1;
   
-/* 7. For each customer, how many delivered pizzas had at least 1 change 
-      and how many had no changes? */     
+-- 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes? */     
+  
 SELECT cco.customer_id,
-       SUM(CASE WHEN cco.exclusions IS NOT NULL 
-            OR cco.extras IS NOT NULL THEN 1 
-             ELSE 0 END) AS at_least_1_change,
-       SUM(CASE WHEN cco.exclusions IS NULL 
-            AND cco.extras IS NULL THEN 1 
-             ELSE 0 END) AS no_change
+   SUM(CASE WHEN cco.exclusions IS NOT NULL OR cco.extras IS NOT NULL THEN 1 
+         ELSE 0 END) AS at_least_1_change,
+   SUM(CASE WHEN cco.exclusions IS NULL AND cco.extras IS NULL THEN 1 
+         ELSE 0 END) AS no_change
 FROM clean_customer_orders AS cco
 INNER JOIN clean_runner_orders AS cro
 ON cco.order_id = cro.order_id
@@ -66,6 +66,7 @@ WHERE cro.distance IS NOT NULL
 GROUP BY customer_id;
        
 -- 8. How many pizzas were delivered that had both exclusions and extras?
+
 SELECT SUM(CASE WHEN cco.exclusions IS NOT NULL 
             AND cco.extras IS NOT NULL THEN 1 
              ELSE 0 END) AS pizza
