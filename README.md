@@ -7,7 +7,6 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 The link to the case study can be found [Here](https://8weeksqlchallenge.com/case-study-1/)
 
-**PostgreSQL Query**
 
 [PostgreSQL Solution](https://8weeksqlchallenge.com/case-study-1/)
 
