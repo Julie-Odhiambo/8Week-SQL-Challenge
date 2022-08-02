@@ -8,7 +8,7 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 The link to full details of the case study and dataset can be found [Here](https://8weeksqlchallenge.com/case-study-1/)
 
 
-[PostgreSQL Solution](https://8weeksqlchallenge.com/case-study-1/)
+Link to my PostgreSQL [Solution](https://8weeksqlchallenge.com/case-study-1/)
 
 ## Case Study #2
 
@@ -24,4 +24,4 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 The link to full details of the case study and dataset can be found [Here](https://8weeksqlchallenge.com/case-study-2/)
 
-[PostgreSQL Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/tree/main/Case%20Study%20%232)
+Link to my PostgreSQL [Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/tree/main/Case%20Study%20%232)
