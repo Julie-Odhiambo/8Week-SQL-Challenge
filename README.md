@@ -5,7 +5,7 @@ Danny seriously loves Japanese food so in the beginning of 2021, he decides to e
 
 Danny’s Diner is in need of your assistance to help the restaurant stay afloat - the restaurant has captured some very basic data from their few months of operation but have no idea how to use their data to help them run the business.
 
-The link to the case study can be found [Here](https://8weeksqlchallenge.com/case-study-1/)
+The link to full details of the case study and dataset can be found [Here](https://8weeksqlchallenge.com/case-study-1/)
 
 
 [PostgreSQL Solution](https://8weeksqlchallenge.com/case-study-1/)
@@ -22,6 +22,6 @@ Danny was sold on the idea, but he knew that pizza alone was not going to help h
 
 Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers.
 
-The link to the case study can be found [Here](https://8weeksqlchallenge.com/case-study-2/)
+The link to full details of the case study and dataset can be found [Here](https://8weeksqlchallenge.com/case-study-2/)
 
 [PostgreSQL Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/tree/main/Case%20Study%20%232)
