@@ -24,8 +24,7 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 The link to full details of the case study and dataset can be found [Here](https://8weeksqlchallenge.com/case-study-2/)
 
-Link to my PostgreSQL Solution: [a) Data Cleaning](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/1.%20Data%20Cleaning)
-                               
-                                [b) Pizza Metrics](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/2.%20Pizza%20Metrics)
-                                
-                                [c) Runner & Customer Experience](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/3.%20Runner%20and%20Customer%20Experience)
+Link to my PostgreSQL Solution: 
+[a) Data Cleaning](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/1.%20Data%20Cleaning)
+[b) Pizza Metrics](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/2.%20Pizza%20Metrics)
+[c) Runner & Customer Experience](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/3.%20Runner%20and%20Customer%20Experience)
