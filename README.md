@@ -10,7 +10,7 @@ The link to the case study can be found [Here](https://8weeksqlchallenge.com/cas
 
 [PostgreSQL Solution](https://8weeksqlchallenge.com/case-study-1/)
 
-##### Case Study #2
+## Case Study #2
 
 **Introduction**
 
