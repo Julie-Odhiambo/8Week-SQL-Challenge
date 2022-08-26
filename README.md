@@ -19,7 +19,7 @@ Case Study #8: Fresh Segments
 
 ## Case Study #1
 
-                      <img src="https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/case-study-1.png" width="450" height="450">
+<img src="https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/case-study-1.png" width="450" height="450">
 
 **Introduction**
 
