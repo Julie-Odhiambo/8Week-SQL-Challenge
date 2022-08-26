@@ -1,4 +1,86 @@
- --  1. How many pizzas were ordered?
+**1. How many pizzas were ordered?**
 
-              SELECT COUNT(*) as total_pizzas_ordered
-FROM clean_customer_orders; 
+    SELECT COUNT(*) as total_pizzas_ordered
+    FROM clean_customer_orders; 
+    
+**2. How many unique customer orders were made?**
+  
+    SELECT COUNT(DISTINCT order_id) AS number_of_unique_orders
+    FROM clean_customer_orders;
+  
+**3. How many successful orders were delivered by each runner?**
+
+    SELECT runner_id, 
+       COUNT (*) AS successful_orders_delivered
+    FROM clean_runner_orders
+    WHERE duration IS NOT NULL
+    GROUP BY runner_id;
+**4. How many of each type of pizza was delivered?**  
+ 
+    SELECT p.pizza_name, 
+           COUNT (*) AS Number_Of_Pizza_Delivered
+    FROM clean_runner_orders AS r
+    LEFT JOIN clean_customer_orders AS c
+    ON r.order_id = c.order_id
+    INNER JOIN pizza_names AS p
+    ON p.pizza_id = c.pizza_id
+    WHERE duration IS NOT NULL
+    GROUP BY p.pizza_name;
+  
+**5. How many Vegetarian and Meatlovers were ordered by each customer?**
+ 
+    SELECT c.customer_id,
+           p.pizza_name,
+           COUNT (*) AS Number_Of_Pizza_Delivered
+    FROM clean_customer_orders AS c
+    INNER JOIN pizza_names AS p
+    ON c.pizza_id = p.pizza_id
+    GROUP BY p.pizza_name, c.customer_id
+    ORDER BY c.customer_id;
+  
+ **6. What was the maximum number of pizzas delivered in a single order?**
+ 
+    SELECT COUNT(*) AS max_pizzas_delivered
+    FROM customer_orders AS c
+    INNER JOIN runner_orders AS r
+    ON c.order_id = r.order_id
+    WHERE r.distance IS NOT NULL
+    GROUP BY r.order_id
+    ORDER BY max_pizzas_delivered DESC
+    LIMIT 1;
+  
+**7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?**
+  
+    SELECT cco.customer_id,
+           SUM(CASE WHEN cco.exclusions IS NOT NULL 
+           OR cco.extras IS NOT NULL THEN 1 ELSE 0 END) AS at_least_1_change,
+           SUM(CASE WHEN cco.exclusions IS NULL AND cco.extras IS NULL THEN 1 
+           ELSE 0 END) AS no_change
+    FROM clean_customer_orders AS cco
+    INNER JOIN clean_runner_orders AS cro
+    ON cco.order_id = cro.order_id
+    WHERE cro.distance IS NOT NULL
+    GROUP BY customer_id;
+       
+**8. How many pizzas were delivered that had both exclusions and extras?**
+
+    SELECT SUM(CASE WHEN cco.exclusions IS NOT NULL AND cco.extras IS NOT NULL THEN 1 
+                ELSE 0 END) AS pizza
+    FROM clean_customer_orders AS cco
+    INNER JOIN clean_runner_orders AS cro
+    ON cco.order_id = cro.order_id
+    WHERE cro.distance IS NOT NULL;
+
+**9. What was the total volume of pizzas ordered for each hour of the day?**
+
+    SELECT COUNT(*), 
+           EXTRACT('HOUR' FROM order_time) as time_of_day
+    FROM clean_customer_orders
+    GROUP BY EXTRACT('HOUR' FROM order_time);
+
+**10. What was the volume of orders for each day of the week?**
+     
+    SELECT TO_CHAR(order_time, 'Day') AS day_of_week,
+           COUNT(*) AS pizza_count
+    FROM clean_customer_orders
+    GROUP BY day_of_week;
