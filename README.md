@@ -1,7 +1,7 @@
 ## [8 Week SQL Challenge](https://8weeksqlchallenge.com/getting-started/)
 This repository contains solutions for the 8 case studies in [#8WeekSQLChallenge.](https://8weeksqlchallenge.com/getting-started/)
 
-📚Table of Contents:
+###📚Table of Contents:
 
 - Case Study #1: Danny's Diner
 
