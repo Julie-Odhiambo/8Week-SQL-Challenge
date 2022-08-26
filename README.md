@@ -13,7 +13,7 @@ This repository contains solutions for the 8 case studies in [#8WeekSQLChallenge
 
 ## Case Study #1
 
-<img src="https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/case-study-1.png" width="450" height="450">
+<img src="https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/case-study-1.png" width="350" height="350">
 
 **Introduction**
 
@@ -28,7 +28,7 @@ Link to my PostgreSQL [Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Ch
 
 ## Case Study #2
 
-<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20Study%20%232/case-study-2.png" width="450" height="450">
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20Study%20%232/case-study-2.png" width="350" height="350">
 
 
 **Introduction**
