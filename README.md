@@ -34,6 +34,9 @@ Link to my PostgreSQL [Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Ch
 
 ## Case Study #2
 
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20Study%20%232/case-study-2.png" width="450" height="450">
+
+
 **Introduction**
 
 Did you know that over 115 million kilograms of pizza is consumed daily worldwide??? (Well according to Wikipedia anyway…)
