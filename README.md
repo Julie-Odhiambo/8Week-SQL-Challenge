@@ -11,7 +11,7 @@ This repository contains solutions for the 8 case studies in [#8WeekSQLChallenge
 - Case Study #6: Clique Bait
 - Case Study #8: Fresh Segments
 
-## Case Study #1
+## Case Study #1: Danny's Diner
 
 <img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/case-study-1.png" width="350" height="350">
 
@@ -26,7 +26,7 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 **View my solution [here](https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/tree/main/Case%20Study%20%231)**
 
-## Case Study #2
+## Case Study #2: Pizza Runner
 
 <img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/case-study-2.png" width="350" height="350">
 
