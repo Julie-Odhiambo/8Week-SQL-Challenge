@@ -28,7 +28,7 @@ Link to my PostgreSQL [Solution](https://github.com/Julie-Odhiambo/8Weeks-SQL-Ch
 
 ## Case Study #2
 
-<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20Study%20%232/case-study-2.png" width="350" height="350">
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/case-study-2.png" width="350" height="350">
 
 
 **Introduction**
