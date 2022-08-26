@@ -1,6 +1,4 @@
- /***********************/
-   
-   A. Pizza Metrics               
+## A. Pizza Metrics                 
 
  
 **1. How many pizzas were ordered?**
@@ -89,3 +87,72 @@
            COUNT(*) AS pizza_count
     FROM clean_customer_orders
     GROUP BY day_of_week;
+    
+ ## B. Runner and Customer Experience
+    
+**1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
+
+    SELECT EXTRACT(WEEK FROM registration_date) AS week,
+            COUNT(*)
+    FROM runners
+    GROUP BY EXTRACT(WEEK FROM registration_date);
+
+**2.  What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?**
+
+    SELECT cro.runner_id, 
+        date_part('minutes', AVG(cro.pickup_time-cco.order_time)) AS avg
+    FROM clean_customer_orders AS cco
+    INNER JOIN clean_runner_orders AS cro
+    ON cco.order_id = cro.order_id
+    WHERE cro.pickup_time IS NOT NULL
+    GROUP BY cro.runner_id;
+
+**3. Is there any relationship between the number of pizzas and how long the order takes to prepare?**
+
+    WITH relationship AS 
+                (SELECT cco.order_id,
+                    COUNT(*) AS number_of_pizzas,                 
+                      (cro.pickup_time-cco.order_time) AS mins_taken
+                 FROM clean_customer_orders AS cco
+                 INNER JOIN clean_runner_orders AS cro
+                 ON cco.order_id = cro.order_id
+                 WHERE cro.pickup_time IS NOT NULL
+                 GROUP BY cco.order_id, mins_taken)
+
+    SELECT 
+      number_of_pizzas, 
+      AVG(mins_taken)
+    FROM relationship
+    GROUP BY number_of_pizzas;
+
+**4. What was the average distance travelled for each customer?**
+
+    SELECT ROUND(AVG(cro.distance),2),
+            cco.customer_id
+     FROM clean_customer_orders AS cco
+     INNER JOIN clean_runner_orders AS cro
+     ON cco.order_id = cro.order_id
+     GROUP BY cco.customer_id
+     ORDER BY cco.customer_id;
+ 
+**5. What was the difference between the longest and shortest delivery times for all orders?**
+
+    SELECT MAX(duration)- MIN(duration) as difference_delivery_time
+    FROM clean_runner_orders;
+
+    -- 6. What was the average speed for each runner for each delivery 
+            and do you notice any trend for these values? */
+    SELECT runner_id, order_id,
+         ROUND((AVG(distance))/(AVG(duration/60)),2) AS avg_speed
+    FROM clean_runner_orders
+    WHERE pickup_time IS NOT NULL
+    GROUP BY runner_id, order_id
+    ORDER BY runner_id;
+
+**7. What is the successful delivery percentage for each runner?**
+
+    SELECT runner_id,
+        ROUND((AVG(CASE WHEN distance IS NULL THEN 0
+            WHEN distance IS NOT NULL THEN 1 END)*100)) AS percentage
+    FROM clean_runner_orders
+    GROUP BY runner_id;
