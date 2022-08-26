@@ -3,18 +3,19 @@ This repository contains the solution for the 8 case studies in #8WeekSQLChallen
 
 📚Table of Contents:
 
-Case Study #1: Danny's Diner
-Case Study #2: Pizza Runner
+####Case Study #1: Danny's Diner
 
-Case Study #3: Foodie-Fi
+####Case Study #2: Pizza Runner
 
-Case Study #4: Data Bank
+####Case Study #3: Foodie-Fi
 
-Case Study #5: Data Mart
+####Case Study #4: Data Bank
 
-Case Study #6: Clique Bait
+####Case Study #5: Data Mart
 
-Case Study #8: Fresh Segments
+####Case Study #6: Clique Bait
+
+####Case Study #8: Fresh Segments
 
 ## Case Study #1
 **Introduction**
