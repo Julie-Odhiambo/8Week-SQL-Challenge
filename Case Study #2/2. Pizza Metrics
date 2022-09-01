@@ -7,10 +7,12 @@ SELECT COUNT(*) as total_pizzas_ordered
 FROM clean_customer_orders; 
   
   -- 2. How many unique customer orders were made?
-  
+
+```  
 SELECT COUNT(DISTINCT order_id) AS number_of_unique_orders
 FROM clean_customer_orders;
-  
+````
+
   -- 3. How many successful orders were delivered by each runner?
 SELECT runner_id, 
        COUNT (*) AS successful_orders_delivered
