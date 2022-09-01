@@ -23,6 +23,8 @@ He plans on using these insights to help him decide whether he should expand the
 Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions!
 
 Danny has shared with you 3 key datasets for this case study:
+<details><summary>Click to view questions</summary>
+<p>
 
 ## Case Study Questions
 
@@ -36,19 +38,10 @@ Danny has shared with you 3 key datasets for this case study:
 8. What is the total items and amount spent for each member before they became a member?
 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer      A and B have at the end of January?
-11. Recreate the following table output using the available data:
-    
-<details><summary>Click to view table</summary>
-<p>
-
-#### We can hide anything, even code!
-   
+11. Recreate the following table output using the available data:  
 12. Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he    	expects null ranking values for the records when customers are not yet part of the loyalty program.
-
-<details><summary>Click to view table</summary>
-<p>
-
-#### We can hide anything, even code!
+</p>
+</details>
    
 ## Solution
 
