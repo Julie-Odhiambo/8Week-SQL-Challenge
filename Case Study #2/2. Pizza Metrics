@@ -8,7 +8,7 @@ FROM clean_customer_orders;
   
   -- 2. How many unique customer orders were made?
 
-```PosgreSQL 
+```SQL 
 SELECT COUNT(DISTINCT order_id) AS number_of_unique_orders
 FROM clean_customer_orders;
 ````
