@@ -17,8 +17,8 @@
 **2. How many unique customer orders were made?**
 
 ```SQL
-    SELECT COUNT(DISTINCT order_id) AS number_of_unique_orders
-    FROM clean_customer_orders;
+SELECT COUNT(DISTINCT order_id) AS number_of_unique_orders
+FROM clean_customer_orders;
 ```
 
 **3. How many successful orders were delivered by each runner?**
