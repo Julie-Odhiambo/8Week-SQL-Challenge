@@ -2,9 +2,11 @@
                  A. Pizza Metrics 
  ***********************************************************/
   --  1. How many pizzas were ordered?
-
+  
+```SQL
 SELECT COUNT(*) as total_pizzas_ordered
-FROM clean_customer_orders; 
+FROM clean_customer_orders;
+```
   
   -- 2. How many unique customer orders were made?
 
