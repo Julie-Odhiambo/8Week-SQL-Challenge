@@ -42,12 +42,14 @@ Danny has shared with you 3 key datasets for this case study:
 <p>
 
 #### We can hide anything, even code!
+   
 12. Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he    	expects null ranking values for the records when customers are not yet part of the loyalty program.
 
 <details><summary>Click to view table</summary>
 <p>
 
 #### We can hide anything, even code!
+   
 ## Solution
 
 **1. What is the total amount each customer spent at the restaurant?**
