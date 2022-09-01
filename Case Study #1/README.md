@@ -38,18 +38,16 @@ Danny has shared with you 3 key datasets for this case study:
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer      A and B have at the end of January?
 11. Recreate the following table output using the available data:
     
-    <details><summary>Click to view table</summary>
+<details><summary>Click to view table</summary>
+<p>
 
-[no](https://hello.ca)
-
-</details>
+#### We can hide anything, even code!
 12. Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he    	expects null ranking values for the records when customers are not yet part of the loyalty program.
- <details><summary>Click to view table</summary>
 
-[no](https://hello.ca)
+<details><summary>Click to view table</summary>
+<p>
 
-</details>
-
+#### We can hide anything, even code!
 ## Solution
 
 **1. What is the total amount each customer spent at the restaurant?**
