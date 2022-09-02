@@ -28,7 +28,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 <p>
 Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions! Danny has shared with you 3 key datasets for this case study:
 
- ```Sales```
+ ```Sales```            
 |**customer_id**|**order_date**|**product_id**|
 |     :---      |     :---     |    :---      |
 |      A	       |  2021-01-01	 |       1      |
@@ -47,9 +47,18 @@ Danny has provided you with a sample of his overall customer data due to privacy
 |      C        |  2021-01-01	 |       3      |
 |      C        |	2021-01-07   |    	3      |
 
- 
+ ```Menu```
+|**product_id** |**product_name**|**price**     |
+|     :---      |     :---       |    :---      |
+|      1	       |  sushi	      |       10     |
+|      2	       |  curry	      |       15     |
+|      3	       |  ramen   	   |       12     | 
 
-
+```Members```
+| **cutomer_id** | **join_date** | 
+| :---           |     :---      |     
+| A              |   1/7/2021    | 
+| B              |   1/9/2021    |
 
    
 </p>
