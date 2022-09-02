@@ -3,13 +3,14 @@ This repository contains my approach, using PostgreSQL, to the 8 case studies in
 
 ## 📚Table of Contents:
 
-- [Case Study #1: Danny's Diner](https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/tree/main/Case%20Study%20%231)
-- [Case Study #2: Pizza Runner](https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/tree/main/Case%20Study%20%232)
-- Case Study #3: Foodie-Fi
-- Case Study #4: Data Bank
-- Case Study #5: Data Mart
-- Case Study #6: Clique Bait
-- Case Study #8: Fresh Segments
+- 🌭[Case Study #1: Danny's Diner](https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/tree/main/Case%20Study%20%231)
+- 🍕[Case Study #2: Pizza Runner](https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/tree/main/Case%20Study%20%232)
+- ⛽Case Study #3: Foodie-Fi
+- 💻Case Study #4: Data Bank
+- 🥦Case Study #5: Data Mart
+- 📲Case Study #6: Clique Bait
+- 👗Case Study #7 - Balanced Tree Clothing Co
+- 🍎Case Study #8: Fresh Segments
 
 ## Case Study #1: Danny's Diner
 
