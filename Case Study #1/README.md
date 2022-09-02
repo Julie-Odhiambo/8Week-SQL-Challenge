@@ -18,7 +18,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 <details><summary>Click to view ERD Diagram</summary>
 <p>
 
-<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/download%20(1).png" width="350" height="350">
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/download%20(1).png" width="500" height="350">
 
 </p>
 </details>
