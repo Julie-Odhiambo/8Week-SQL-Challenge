@@ -57,7 +57,7 @@ ORDER BY s.customer_id;
 ```
 
 **Steps:**
-- Use **SUM** and **GROUP BY** to get ```total_sales``` contributed by each customer.
+- Use **SUM** and **GROUP BY** to get ```amount_spent``` for each customer.
 - Use **INNER JOIN** to merge ```sales``` and ```menu``` tables on ```product_id.```
 
 **Output:**
@@ -81,8 +81,8 @@ GROUP BY customer_id
 ```
 
 **Steps:**
-- Use **COUNT DISTINCT** to find the ```amount_spent``` for each customer.
-- using **COUNT** alone without **DISTINCT** on ```order_date``` would result in repetition of the number of days.
+- Use **COUNT DISTINCT** on ```order_date``` to calculate the number of visits to the restaurant for each customer.
+- using **COUNT** alone without **DISTINCT** would result in repetition of the number of ```days.```
 
 **Output:**
 | **cutomer_id** | **days**        | 
@@ -101,7 +101,7 @@ GROUP BY customer_id
 ```SQL
 WITH purchase AS (SELECT s.customer_id, m.product_name, s.order_date,
       RANK() 
-      OVER(PARTITION BY s.customer_id ORDER BY order_date) AS rank
+        OVER(PARTITION BY s.customer_id ORDER BY order_date) AS rank
       FROM sales AS s
       INNER JOIN menu AS m
       ON m.product_id = s.product_id)
@@ -112,10 +112,10 @@ WHERE rank = 1
 
 **Steps:**
 - Create a CTE ```purchase.```
-- Use **Windows function**'s **RANK** to create a new column rank based on ```order_date.```
+- Use **Windows function**'s **RANK** to create a new column ```rank``` based on ```order_date.```
 - Use **INNER JOIN** to merge tables ```menu``` and ```sales.```
 - In the main query, **SELECT** ```purchase.customer_id,``` ```purchase.product_name``` and ```purchase.order_date```
-  and subset using ```where``` for **RANK 1.***
+  and subset using ```where``` for **RANK **1.
 
 **Output:**
 
