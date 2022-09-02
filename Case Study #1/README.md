@@ -56,6 +56,22 @@ GROUP BY s.customer_id
 ORDER BY s.customer_id;
 ```
 
+**Steps:**
+- Use **SUM** and **GROUP BY** to get ```total_sales``` contributed by each customer.
+- Use **INNER JOIN** to merge ```sales``` and ```menu``` tables on ```product_id.```
+
+**Output:**
+| **cutomer_id** | **amount_spent** | 
+| :---           |     :---         |     
+| A              |      76          | 
+| B              |      74          |
+| C              |      36          |
+
+**Answer:**
+- Customer A spent $76.
+- Customer B spent $74.
+- Customer C spent $36.
+
 **2. How many days has each customer visited the restaurant?**
 
 ```SQL
@@ -63,6 +79,22 @@ SELECT customer_id, COUNT(DISTINCT order_date) AS days
 FROM sales
 GROUP BY customer_id
 ```
+
+**Steps:**
+- Use **COUNT DISTINCT** to find the ```amount_spent``` for each customer.
+- using **COUNT** alone without **DISTINCT** on ```order_date``` would result in repetition of the number of days.
+
+**Output:**
+| **cutomer_id** | **days**        | 
+| :---           |     :---        |     
+| A              |      4          | 
+| B              |      6          |
+| C              |      2          |
+
+**Answer:**
+- Customer A visited the restaurant 4 times.
+- Customer B visited the restaurant 6 times.
+- Customer C visited the restaurant 2 times.
 
 **3. What was the first item from the menu purchased by each customer?**
 
@@ -77,6 +109,27 @@ SELECT DISTINCT purchase.customer_id, purchase.product_name, purchase.order_date
 FROM purchase
 WHERE rank = 1
 ```
+
+**Steps:**
+- Create a CTE ```purchase.```
+- Use **Windows function**'s **RANK** to create a new column rank based on ```order_date.```
+- Use **INNER JOIN** to merge tables ```menu``` and ```sales.```
+- In the main query, **SELECT** ```purchase.customer_id,``` ```purchase.product_name``` and ```purchase.order_date```
+  and subset using ```where``` for **RANK 1.***
+
+**Output:**
+
+| **cutomer_id** | **product_name**| **order_date**|
+| :---           |     :---        |  :---         | 
+| A              |      curry      |    2011-01-01 |  
+| A              |      sushi      |    2011-01-01 | 
+| B              |      curry      |    2011-01-01 | 
+| C              |      ramen      |    2011-01-01 |
+
+**Answer:**
+- Customer A's first order was sushi and curry.
+- Customer B's first order is curry.
+- Customer C's first order is ramen.
 
 **4. What is the most purchased item on the menu and how many times was it purchased by all customers?**
 
