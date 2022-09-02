@@ -18,7 +18,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 <details><summary>Click to view ERD Diagram</summary>
 <p>
 
-<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/download%20(1).png" width="700" height="350">
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/download%20(1).png" width="600" height="350">
 
 </p>
 </details>
@@ -26,9 +26,32 @@ Danny wants to use the data to answer a few simple questions about his customers
 ## Dataset
 <details><summary>Click to view Dataset</summary>
 <p>
-Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions!
+Danny has provided you with a sample of his overall customer data due to privacy issues - but he hopes that these examples are enough for you to write fully functioning SQL queries to help him answer his questions! Danny has shared with you 3 key datasets for this case study:
 
-Danny has shared with you 3 key datasets for this case study:
+ ```Sales```
+|**customer_id**|**order_date**|**product_id**|
+|     :---      |     :---     |    :---      |
+|      A	       |  2021-01-01	 |       1      |
+|      A	       |  2021-01-01	 |       2      |
+|      A	       |  2021-01-07	 |       2      |
+|      A	       |  2021-01-10	 |       3      |
+|      A	       |  2021-01-11	 |       3      |
+|      A	       |  2021-01-11	 |       3      |
+|      B	       |  2021-01-01	 |       2      |
+|      B	       |  2021-01-02	 |       2      |
+|      B        |  2021-01-04  |       1      |
+|      B        |  2021-01-11  |       1      |
+|      B        |  2021-01-16  |       3      |
+|      B        |  2021-02-01  |       3      |
+|      C        |  2021-01-01	 |       3      |
+|      C        |  2021-01-01	 |       3      |
+|      C        |	2021-01-07   |    	3      |
+
+ 
+
+
+
+   
 </p>
 </details>
 
