@@ -65,7 +65,7 @@ Danny has provided you with a sample of his overall customer data due to privacy
 </details>
 
 ## 📄Case Study Questions
-<details><summary>Click to view questions</summary>
+<details><summary>Click arrow to view questions</summary>
 <p>
 
 1. What is the total amount each customer spent at the restaurant?
@@ -84,7 +84,7 @@ Danny has provided you with a sample of his overall customer data due to privacy
 </details>
    
 ## 📉Solution
-<details><summary>Click to view solution</summary>
+<details><summary>Click arrow to view solution</summary>
 <p>
 
 **1. What is the total amount each customer spent at the restaurant?**
