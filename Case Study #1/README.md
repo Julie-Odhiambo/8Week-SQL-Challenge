@@ -194,7 +194,7 @@ LIMIT 1
 - Use **ORDER BY** ```DESC``` to get output from largest to smallest.
 - Use **LIMIT** ```1``` to output the most purchased item only.
 
-**Output**
+**Output:**
 | **product_name**| **count**|
 |     :---        |  :---    | 
 |      ramen      |    8     |  
@@ -296,14 +296,14 @@ WHERE last_purchased = 1
 - Create a main query and **Select** ```customer_id```, ```product_name,``` ```order_date```.
 - Use **WHERE** to filter for ```last_purchased``` before join_date.
 
-**Output**
+**Output:**
 | **cutomer_id** | **product_name**| **order_date**|
 | :---           |     :---        |  :---         | 
 | A              |      sushi      |    2011-01-01 |  
 | A              |      curry      |    2011-01-01 | 
 | B              |      sushi      |    2011-01-04 | 
 
-**Answer**
+**Answer:**
 Customer A’s last order before becoming a member is sushi and curry.
 Customer B's last order before becoming a member is sushi.
 
@@ -327,7 +327,7 @@ GROUP BY s.customer_id
 - Use **WHERE** to filter for ```order_date``` before ```join_date```.
 - Use **COUNT** and **SUM** to get ```total_items``` and total ```amount_spent``` respectively together with **GROUP BY** on  ```customer_id```.
 
-**Output**
+**Output:**
 | **cutomer_id** | **product_name**| **order_date**|
 | :---           |     :---        |  :---         | 
 | A              |      3          |    25         |  
@@ -361,7 +361,7 @@ GROUP BY s.customer_id
 | B              |      940        | 
 | C              |      360        |
 
-**Answer**
+**Answer:**
 - Customer A's total points is 860.
 - Customer B's total points is 940.
 - Customer C's total points is 360.
