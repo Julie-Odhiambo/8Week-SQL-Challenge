@@ -396,6 +396,7 @@ Total points for Customer B is 820.
 ## BONUS QUESTIONS 
 
 **1. JOIN ALL THINGS**
+   
 Recreate the following table output using the available data.
 <details><summary>Click arrow to view table:</summary>
 <p>
@@ -498,7 +499,7 @@ SELECT *, CASE WHEN member = 'N' THEN NULL
 FROM rankings1
 ```
 
-**Answer**
+**Answer:**
 
 | **cutomer_id** | **order_date**| **product_name**|**price**|	**member**|	**ranking**|
 | :---           |  :---         |     :---        |  :---   | :---      | :---       |
