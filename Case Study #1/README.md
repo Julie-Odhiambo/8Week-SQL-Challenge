@@ -1,4 +1,4 @@
-## Case Study #1 : Danny's Diner
+## 🍔Case Study #1 : Danny's Diner
 
 <img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/case-study-1.png" width="350" height="350">
 
