@@ -115,10 +115,9 @@ WHERE rank = 1
 - Use **Windows function**'s **RANK** to create a new column ```rank``` based on ```order_date.```
 - Use **INNER JOIN** to merge tables ```menu``` and ```sales.```
 - In the main query, **SELECT** ```purchase.customer_id,``` ```purchase.product_name``` and ```purchase.order_date```
-  and subset using ```where``` for **RANK **1.
+  and subset using **where** for **RANK** 1.
 
 **Output:**
-
 | **cutomer_id** | **product_name**| **order_date**|
 | :---           |     :---        |  :---         | 
 | A              |      curry      |    2011-01-01 |  
@@ -135,9 +134,10 @@ WHERE rank = 1
 
 ```SQL
 WITH most_purchased AS (
-     SELECT COUNT(*) AS count, product_id
+     SELECT COUNT(*) AS count, 
+               product_id
      FROM sales
-       GROUP BY product_id
+     GROUP BY product_id
       )
 SELECT m.product_name, m_p.count
 FROM menu AS m
@@ -146,23 +146,57 @@ ON m_p.product_id = m.product_id
 ORDER BY m_p.count DESC
 LIMIT 1
 ```
+**Steps:**
+- Create a CTE ```most_purchased.```
+- Use **GROUP BY** and **COUNT** to get total count for each ```product_id.```
+- Create another query and **INNER JOIN** ```menu``` table and ```most_purchased``` CTE.
+- Use **ORDER BY** ```DESC``` to get output from largest to smallest.
+- Use **LIMIT** ```1``` to output the most purchased item only.
+
+| **product_name**| **count**|
+|     :---        |  :---    | 
+|      ramen      |    8     |  
+
+**Answer:**
+Ramen is the most purchased item on the menu and was bought 8 times.
 
 **5. Which item was the most popular for each customer?**
 
 ```SQL
 WITH most_popular AS (
-          SELECT s.customer_id, m.product_name, COUNT(*) AS order_count,
-        RANK() OVER(PARTITION BY s.customer_id 
+          SELECT s.customer_id, 
+                      m.product_name, 
+                        COUNT(*) AS order_count,
+                         RANK() OVER(PARTITION BY s.customer_id 
           ORDER BY count(s.customer_id) DESC) AS count
           FROM sales AS s
           INNER JOIN menu AS m
           ON s.product_id = m.product_id
                 GROUP BY s.customer_id, m.product_name			
          )
-SELECT most_popular.customer_id, most_popular.product_name
+SELECT most_popular.customer_id, 
+            most_popular.product_name
 FROM most_popular
 WHERE most_popular.count = 1
 ```
+**Steps:**
+- Create a cte ```most_popular```.
+- Use **RANK** to sort the ```order_count``` for each product in descending order for each customer.
+- Use **WHERE** to subset results for```most_popular.count``` = 1 to get most popular item for each customer.
+
+**Output**
+**Output:**
+| **cutomer_id** | **product_name**|
+| :---           |     :---        | 
+| A              |      ramen      |  
+| B              |      sushi      | 
+| B              |      curry      |
+| B              |      ramen      |
+| C              |      ramen      |
+
+**Answer:**
+- Ramen is a fave for all customers.
+- In addition to that, curry and sushi are also popular for customer B.
 
 **6. Which item was purchased first by the customer after they became a member?**
 
