@@ -349,7 +349,6 @@ WHERE s.customer_id IN ('A', 'B')
 AND EXTRACT(month from order_date) = 1
 GROUP BY s.customer_id
 ```
-
 **Steps:**
 In dates_cte, find out customer’s valid_date (which is 6 days after join_date and inclusive of join_date) and last_day of Jan 2021 (which is ‘2021–01–31’).
 Our assumptions are:
@@ -357,6 +356,13 @@ Our assumptions are:
 On Day -X to Day 1 (customer becomes member on Day 1 join_date), each $1 spent is 10 points and for sushi, each $1 spent is 20 points.
 On Day 1 join_date to Day 7 valid_date, each $1 spent for all items is 20 points.
 On Day 8 to last_day of Jan 2021, each $1 spent is 10 points and sushi is 2x points.
+
+**Output**
+| **cutomer_id** | **points**      |
+| :---           |    :---         |
+| A              |    1370         |  
+| B              |    940          | 
+
 **Answer**
 Total points for Customer A is 1,370.
 Total points for Customer B is 820.
