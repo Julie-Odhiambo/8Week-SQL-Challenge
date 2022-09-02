@@ -55,7 +55,6 @@ ON m.product_id = s.product_id
 GROUP BY s.customer_id
 ORDER BY s.customer_id;
 ```
-
 **Steps:**
 - Use **SUM** and **GROUP BY** to get ```amount_spent``` for each customer.
 - Use **INNER JOIN** to merge ```sales``` and ```menu``` tables on ```product_id.```
@@ -153,6 +152,7 @@ LIMIT 1
 - Use **ORDER BY** ```DESC``` to get output from largest to smallest.
 - Use **LIMIT** ```1``` to output the most purchased item only.
 
+**Output**
 | **product_name**| **count**|
 |     :---        |  :---    | 
 |      ramen      |    8     |  
@@ -184,7 +184,6 @@ WHERE most_popular.count = 1
 - Use **RANK** to sort the ```order_count``` for each product in descending order for each customer.
 - Use **WHERE** to subset results for```most_popular.count``` = 1 to get most popular item for each customer.
 
-**Output**
 **Output:**
 | **cutomer_id** | **product_name**|
 | :---           |     :---        | 
@@ -202,44 +201,76 @@ WHERE most_popular.count = 1
 
 ```SQL
 WITH member_purchase AS (SELECT	s.customer_id, m.product_name,
-        RANK()
-          OVER(partition by s.customer_id 
-          ORDER BY s.order_date) AS first_purchased, 
-        s.order_date
-             FROM sales AS s
-       INNER JOIN members AS m1
-       ON s.customer_id = m1.customer_id
-       INNER JOIN menu AS m
-       ON s.product_id = m.product_id
-       WHERE s.order_date >= m1.join_date)
+                                 RANK()
+                                     OVER(partition by s.customer_id ORDER BY s.order_date) AS first_purchased, 
+                                       s.order_date
+                         FROM sales AS s
+                         INNER JOIN members AS m1
+                         ON s.customer_id = m1.customer_id
+                         INNER JOIN menu AS m
+                         ON s.product_id = m.product_id
+                         WHERE s.order_date >= m1.join_date)
 SELECT customer_id, product_name, order_date
 FROM member_purchase
 WHERE first_purchased = 1
 ```
+**Steps:**
+- Create a cte ```member_purchase```.
+- Use **windows function**'s **RANK** to **partition by** ```customer_id``` in ascending order of ```order_date```. 
+- Use **WHERE** to filter for ```order_date``` on or after ```join_date```.
+- In the main query, **SELECT** ```cutomer_id``` and use **WHERE** to filter for first ```rank``` only to get first item purchased by each customer.
+
+**Output:**
+| **cutomer_id** | **product_name**| **order_date**|
+| :---           |     :---        |  :---         | 
+| A              |      sushi      |    2011-01-07 |  
+| B              |      curry      |    2011-01-11 |
+
+**Answer:**
+Customer A's first order as member is sushi.
+Customer B's first order as member is curry.
 
 **7. Which item was purchased just before the customer became a member?**
 
 ```SQL
-WITH member_purchase AS (SELECT	s.customer_id, m.product_name,
-          RANK()
-            OVER(partition by s.customer_id 
-         ORDER BY s.order_date DESC) AS last_purchased, 
-          s.order_date
-       FROM sales AS s
-       INNER JOIN members AS m1
-       ON s.customer_id = m1.customer_id
-       INNER JOIN menu AS m
-       ON s.product_id = m.product_id
-       WHERE s.order_date < m1.join_date)
+WITH member_purchase AS (SELECT s.customer_id, m.product_name,
+                                  RANK() OVER(partition by s.customer_id 
+                                     ORDER BY s.order_date DESC) AS last_purchased, 
+                                       s.order_date
+                      FROM sales AS s
+                      INNER JOIN members AS m1
+                      ON s.customer_id = m1.customer_id
+                      INNER JOIN menu AS m
+                      ON s.product_id = m.product_id
+                      WHERE s.order_date < m1.join_date)
 SELECT customer_id, product_name, order_date
 FROM member_purchase
 WHERE last_purchased = 1
 ```
 
+**Steps:**
+- Create a **cte** ```member_purchase```.
+- Use **Window functions**'s **Rank** to create new column **Partition by** ```customer_id``` in descending order_date to find out the last order_date before  customer becomes a member.
+- Create a main query and **Select** ```customer_id```, ```product_name,``` ```order_date```.
+- Use **WHERE** to filter for ```last_purchased``` before join_date.
+
+**Output**
+| **cutomer_id** | **product_name**| **order_date**|
+| :---           |     :---        |  :---         | 
+| A              |      sushi      |    2011-01-01 |  
+| A              |      curry      |    2011-01-01 | 
+| B              |      sushi      |    2011-01-04 | 
+
+**Answer**
+Customer A’s last order before becoming a member is sushi and curry.
+Customer B's last order before becoming a member is sushi.
+
 **8. What is the total items and amount spent for each member before they became a member?**
 
 ```SQL
-SELECT  s.customer_id, COUNT (*) AS total_items, SUM(m.price) AS amount_spent
+SELECT  s.customer_id, 
+         COUNT (*) AS total_items, 
+            SUM(m.price) AS amount_spent
 FROM sales AS s
 JOIN menu AS m
 ON s.product_id = m.product_id
@@ -248,6 +279,22 @@ ON s.customer_id = m1.customer_id
 WHERE order_date < join_date
 GROUP BY s.customer_id
 ```
+
+**Steps:**
+- **JOIN** tables ```menu```, ```members``` and ```sales```.
+- Use **WHERE** to filter for ```order_date``` before ```join_date```.
+- Use **COUNT** and **SUM** to get ```total_items``` and total ```amount_spent``` respectively together with **GROUP BY** on  ```customer_id```.
+
+**Output**
+| **cutomer_id** | **product_name**| **order_date**|
+| :---           |     :---        |  :---         | 
+| A              |      3          |    25         |  
+| B              |      2          |    40         | 
+
+**Answer:**
+
+Customer A spent $ 25 on 3 items.
+Customer B spent $40 on 2 items.
 
 **9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?**
 
@@ -260,6 +307,22 @@ JOIN menu AS m
 ON s.product_id = m.product_id
 GROUP BY s.customer_id
 ```
+**Steps:**
+- Use **CASE WHEN** to create conditional statements. If product_name = sushi, then multiply price by 2*10 points.
+- Else, multiply $1 by 10 points ```price``` and **SUM** the points.
+
+**Output:**
+
+| **cutomer_id** | **points**      |
+| :---           |     :---        |
+| A              |      860        |  
+| B              |      940        | 
+| C              |      360        |
+
+**Answer**
+- Customer A's total points is 860.
+- Customer B's total points is 940.
+- Customer C's total points is 360.
 
 **10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?**
 
@@ -279,6 +342,16 @@ AND EXTRACT(month from order_date) = 1
 GROUP BY s.customer_id
 ```
 
+**Steps:**
+In dates_cte, find out customer’s valid_date (which is 6 days after join_date and inclusive of join_date) and last_day of Jan 2021 (which is ‘2021–01–31’).
+Our assumptions are:
+
+On Day -X to Day 1 (customer becomes member on Day 1 join_date), each $1 spent is 10 points and for sushi, each $1 spent is 20 points.
+On Day 1 join_date to Day 7 valid_date, each $1 spent for all items is 20 points.
+On Day 8 to last_day of Jan 2021, each $1 spent is 10 points and sushi is 2x points.
+**Answer**
+Total points for Customer A is 1,370.
+Total points for Customer B is 820.
 ## BONUS QUESTIONS 
  
 **1. JOIN ALL THINGS**
@@ -294,6 +367,25 @@ LEFT JOIN members AS m1
 ON s.customer_id = m1.customer_id
 ORDER BY s.customer_id, s.order_date, m.price DESC
 ```
+**Answer**
+
+| **cutomer_id** | **order_date**| **product_name**|**price**|	**member**|
+| :---           |  :---         |     :---        |  :---   | :---      |
+| A              |   2021-01-01  |     sushi       |  10     |    N      |
+| A              |   2021-01-01  |     curry       |  15     |    N      |
+| A              |   2021-01-07  |     curry       |  15     |    Y      |
+| A              |   2021-01-10  |     ramen       |  12     |    Y      |
+| A              |   2021-01-11  |     ramen       |  12     |    Y      |
+| A              |   2021-01-11  |     ramen       |  12     |    Y      |
+| B              |   2021-01-01  |     curry       |  15     |    N      |
+| B              |   2021-01-02  |     curry       |  15     |    N      |
+| B              |   2021-01-04  |     sushi       |  10     |    N      |
+| B              |   2021-01-11  |     sushi       |  10     |    Y      |
+| B              |   2021-01-16  |     ramen       |  12     |    Y      |
+| B              |   2021-02-01  |     ramen       |  12     |    Y      |
+| C              |   2021-01-01  |     ramen       |  12     |    N      |
+| C              |   2021-01-01  |     ramen       |  12     |    N      |
+| C              |   2021-01-07  |     ramen       |  12     |    N      |
 
 **2. RANK ALL THE THINGS**
 
@@ -315,3 +407,23 @@ SELECT *, CASE WHEN member = 'N' THEN NULL
                 ORDER BY order_date) END AS ranking
 FROM rankings1
 ```
+
+**Answer**
+
+| **cutomer_id** | **order_date**| **product_name**|**price**|	**member**|	**ranking**|
+| :---           |  :---         |     :---        |  :---   | :---      | :---       |
+| A              |   2021-01-01  |     sushi       |  10     |    N      |   NULL     |
+| A              |   2021-01-01  |     curry       |  15     |    N      |   NULL     |
+| A              |   2021-01-07  |     curry       |  15     |    Y      |    1       |
+| A              |   2021-01-10  |     ramen       |  12     |    Y      |    2       |
+| A              |   2021-01-11  |     ramen       |  12     |    Y      |    3       |
+| A              |   2021-01-11  |     ramen       |  12     |    Y      |    3       |
+| B              |   2021-01-01  |     curry       |  15     |    N      |   NULL     |
+| B              |   2021-01-02  |     curry       |  15     |    N      |   NULL     |
+| B              |   2021-01-04  |     sushi       |  10     |    N      |   NULL     |
+| B              |   2021-01-11  |     sushi       |  10     |    Y      |    1       |
+| B              |   2021-01-16  |     ramen       |  12     |    Y      |    2       |
+| B              |   2021-02-01  |     ramen       |  12     |    Y      |    3       |
+| C              |   2021-01-01  |     ramen       |  12     |    N      |   NULL     |
+| C              |   2021-01-01  |     ramen       |  12     |    N      |   NULL     |
+| C              |   2021-01-07  |     ramen       |  12     |    N      |   NULL     |
