@@ -432,7 +432,7 @@ LEFT JOIN members AS m1
 ON s.customer_id = m1.customer_id
 ORDER BY s.customer_id, s.order_date, m.price DESC
 ```
-**Answer**
+**Answer:**
 
 | **cutomer_id** | **order_date**| **product_name**|**price**|	**member**|
 | :---           |  :---         |     :---        |  :---   | :---      |
@@ -453,10 +453,12 @@ ORDER BY s.customer_id, s.order_date, m.price DESC
 | C              |   2021-01-07  |     ramen       |  12     |    N      |
 
 **2. RANK ALL THE THINGS**
+   
 Danny also requires further information about the ranking of customer products, but he purposely does not need the ranking for non-member purchases so he expects null ranking values for the records when customers are not yet part of the loyalty program.
    
 <details><summary>Click arrow to view table:</summary>
 <p>
+   
 | **cutomer_id** | **order_date**| **product_name**|**price**|	**member**|	**ranking**|
 | :---           |  :---         |     :---        |  :---   | :---      | :---       |
 | A              |   2021-01-01  |     sushi       |  10     |    N      |   NULL     |
