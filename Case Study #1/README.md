@@ -393,9 +393,15 @@ GROUP BY s.customer_id
 Total points for Customer A is 1,370.
 Total points for Customer B is 820.
 ## BONUS QUESTIONS 
- 
-**1. JOIN ALL THINGS**
+   
+## Solution
 
+**1. JOIN ALL THINGS**
+<details><summary>Click to view solution</summary>
+<p>
+**Recreate the following table output using the available data:**
+   </p>
+</details>
 ```SQL
 SELECT  s.customer_id, s.order_date, m.product_name, m.price, 
     CASE WHEN order_date >= join_date THEN 'Y'
