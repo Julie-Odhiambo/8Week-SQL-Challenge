@@ -4,11 +4,11 @@
 
 ## 📝Table of Contents
 
-   1. Problem Statement
-   2. Entity Relationship Diagram
-   3. Dataset
-   4. Case Study Questions
-   5. Solution
+   - Problem Statement
+   - Entity Relationship Diagram
+   - Dataset
+   - Case Study Questions
+   - Solution
 
 ## 🤔Problem Statement
 
