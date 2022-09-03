@@ -8,20 +8,21 @@
    - Dataset
    - Case Study Questions
    - Solution
-      
-      📌Data Processing/Cleaning
-      
-      📌Pizza Metrics
-      
-      📌Runner and Customer Experience
-      
-      📌Ingredient Optimization
-      
-      📌Pricing and Ratings
-      
-      📌Bonus questions
+      - Data Processing/Cleaning
+      - Pizza Metrics
+      - Runner and Customer Experience
+      - Ingredient Optimization
+      - Pricing and Ratings
+      - Ingredient Optimization
+      - Bonus questions
 ## 🤔Problem Statement
+Danny was scrolling through his Instagram feed when something really caught his eye - “80s Retro Styling and Pizza Is The Future!"
+
+He was sold on the idea and wants to exand his **Pizza Empire** but pizza alone wont get him seed funding for expansion. He therefore decides to Uberize it, hence **Pizza Runner** was launched.
+
+He starts by recruiting runners to deliver fresh pizza from pizza runner and maxes his credit card paying freelance developers to build a mobile app to accept orders from customers.
 ## 🔗Entity Relationship Diagram
+
 ## 📂Dataset
 ## ♦Case Study Question
 ## 📊Solution
