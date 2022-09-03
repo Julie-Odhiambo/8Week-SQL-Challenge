@@ -22,7 +22,8 @@ He was sold on the idea and wants to exand his **Pizza Empire** but pizza alone 
 
 He starts by recruiting runners to deliver fresh pizza from pizza runner and maxes his credit card paying freelance developers to build a mobile app to accept orders from customers.
 ## 🔗Entity Relationship Diagram
-<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/1_C-oJ9eAoXFh6DC0w0PGYWQ.png" width="350" height="350">
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/PizzaRunner.png" width="600" height="350">
+
 ## 📂Dataset
 ## ♦Case Study Question
 ## 📊Solution
