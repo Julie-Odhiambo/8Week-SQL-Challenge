@@ -64,7 +64,7 @@ Danny has provided you with a sample of his overall customer data due to privacy
 </p>
 </details>
 
-## 📄Case Study Questions
+## ♦Case Study Questions
 <details><summary>Click arrow to view questions</summary>
 <p>
 
@@ -83,7 +83,7 @@ Danny has provided you with a sample of his overall customer data due to privacy
 </p>
 </details>
    
-## 📉Solution
+## 📊Solution
 <details><summary>Click arrow to view solution</summary>
 <p>
 
