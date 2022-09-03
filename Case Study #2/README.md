@@ -1,10 +1,31 @@
-[a) Data Cleaning](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/1.%20Data%20Cleaning)
+## 🍕Case Study #2: Pizza Runner
 
-[b) Pizza Metrics](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/2.%20Pizza%20Metrics)
+<img src="https://github.com/Julie-Odhiambo/8Week-SQL-Challenge/blob/main/Case%20study/case-study-2.png" width="350" height="350">
 
-[c) Runner & Customer Experience](https://github.com/Julie-Odhiambo/8Weeks-SQL-Challenge/blob/main/Case%20Study%20%232/3.%20Runner%20and%20Customer%20Experience)
-
-## A. Pizza Metrics                 
+## 📝Table of Contents
+   - Problem Statement
+   - Entity Relationship Diagram
+   - Dataset
+   - Case Study Questions
+   - Solution
+      
+      📌Data Processing/Cleaning
+      
+      📌Pizza Metrics
+      
+      📌Runner and Customer Experience
+      
+      📌Ingredient Optimization
+      
+      📌Pricing and Ratings
+      
+      📌Bonus questions
+## 🤔Problem Statement
+## 🔗Entity Relationship Diagram
+## 📂Dataset
+## ♦Case Study Question
+## 📊Solution
+### A. Pizza Metrics                 
 
  
 **1. How many pizzas were ordered?**
