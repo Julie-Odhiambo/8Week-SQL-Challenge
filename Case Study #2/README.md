@@ -454,7 +454,7 @@ SELECT ROUND(AVG(cro.distance),2),
 SELECT MAX(duration)- MIN(duration) as difference_delivery_time
 FROM clean_runner_orders;
 
-    -- 6. What was the average speed for each runner for each delivery 
+ **6. What was the average speed for each runner for each delivery 
             and do you notice any trend for these values? */
 SELECT runner_id, order_id,
      ROUND((AVG(distance))/(AVG(duration/60)),2) AS avg_speed
